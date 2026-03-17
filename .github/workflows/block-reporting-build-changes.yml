@@ -1,0 +1,38 @@
+name: Block changes to Reporting/build
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  block_build_artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fail if PR modifies Reporting/build
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+
+          echo "Base: $BASE_SHA"
+          echo "Head: $HEAD_SHA"
+
+          # List changed files between base and head
+          CHANGED=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" || true)
+          echo "$CHANGED"
+
+          if echo "$CHANGED" | grep -qE '^Reporting/build/'; then
+            echo "ERROR: This PR modifies Reporting/build/."
+            echo "We treat Reporting/build as deployed static snapshot output; do not change it in PRs." 
+            echo "If you need to update the snapshot, do it in a dedicated 'snapshot rebuild' PR and verify the live URL." 
+            exit 1
+          fi
+
+          echo "OK: PR does not modify Reporting/build/."
