@@ -1,6 +1,7 @@
 .evidence/template
 .svelte-kit
-build
+# build/ is intentionally tracked for static (snapshot) hosting on Vercel
+# build
 node_modules
 .DS_Store
 # static/data contains the generated snapshot data for this portfolio deployment
