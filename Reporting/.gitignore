@@ -1,0 +1,12 @@
+.evidence/template
+.svelte-kit
+build
+node_modules
+.DS_Store
+# static/data contains the generated snapshot data for this portfolio deployment
+# (so Vercel can build without database credentials)
+# static/data
+*.options.yaml
+.vscode/settings.json
+.env
+.evidence/meta

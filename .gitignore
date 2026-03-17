@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+
+# dbt
+**/target/
+**/dbt_packages/
+**/logs/
+
+# Evidence (Reporting)
+Reporting/node_modules/
+Reporting/build/
+Reporting/.svelte-kit/
+Reporting/.evidence/template/
+Reporting/.evidence/meta/
+Reporting/.env
+Reporting/*.options.yaml
