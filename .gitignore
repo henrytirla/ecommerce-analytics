@@ -8,7 +8,8 @@
 
 # Evidence (Reporting)
 Reporting/node_modules/
-Reporting/build/
+# Reporting/build/ is intentionally tracked for static hosting on Vercel
+# Reporting/build/
 Reporting/.svelte-kit/
 Reporting/.evidence/template/
 Reporting/.evidence/meta/
