@@ -1,0 +1,8 @@
+# Python requirements for the dbt project
+# Install with: pip install -r requirements.txt
+
+# dbt
+# Pin a compatible major/minor range; adjust if you want to lock exact versions
+# (dbt-postgres provides the Postgres adapter)
+dbt-core>=1.7,<2.0
+dbt-postgres>=1.7,<2.0
