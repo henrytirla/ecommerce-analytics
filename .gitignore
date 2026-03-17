@@ -14,3 +14,6 @@ Reporting/.evidence/template/
 Reporting/.evidence/meta/
 Reporting/.env
 Reporting/*.options.yaml
+
+# Lightdash repo is experimental; keep it out of this monorepo
+lightdash/
