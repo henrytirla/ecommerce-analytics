@@ -21,9 +21,49 @@ End-to-end analytics engineering mini-project:
 
 ## Prerequisites
 
-- Python + dbt installed (dbt-core + dbt-postgres)
-- Node.js + npm installed
+- Python (3.9+ recommended)
+- Node.js + npm
 - Postgres running locally
+
+### Recommended: install dbt in a virtual environment (uv)
+
+If you want a reproducible local setup, use a dedicated virtual env and install dbt + the Postgres adapter inside it.
+
+1) Install uv:
+
+```bash
+brew install uv
+# or: pipx install uv
+```
+
+2) Create & activate a virtual environment:
+
+```bash
+uv venv
+source .venv/bin/activate
+```
+
+3) Install dbt + Postgres adapter:
+
+```bash
+uv pip install -r requirements.txt
+# (installs dbt-core and dbt-postgres)
+
+dbt --version
+```
+
+### Alternative: pipx (works, but keep adapters consistent)
+
+Using `pipx install dbt-core` is fine, but **the adapter must be installed into the same environment** as dbt.
+
+Example:
+
+```bash
+pipx install dbt-core
+pipx inject dbt-core dbt-postgres
+```
+
+If you prefer mixing approaches (e.g., dbt via pipx but adapters in a venv), you can run into "Could not find adapter" errors.
 
 ---
 
